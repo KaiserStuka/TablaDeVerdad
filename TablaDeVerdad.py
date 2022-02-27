@@ -8,8 +8,9 @@ booleanos = [True,False]
 
 print("Representar la tabla logica [(p->q)^(-q^r)] v (p<=>r)")
 print()
-print("  p   |\t  q   |\t  r   \tp->q   -q\t\tp<=>r\t-q ^ r\t| [(p->q)^(-q^r)]\t[(p->q)^(-q^r)] v p<=>r")
-print("-"*100)
+print("-"*108)
+print("  p\t\t\t\t\t\t  r\t\t\t\t\t\t -q\t\t\t\t\t\t-q^r\t[(p->q)^(-q^r)]")
+print("-"*108)
 
 t = True
 
@@ -17,19 +18,17 @@ t = True
 for p in booleanos:
     for q in booleanos:
         for r in booleanos:
-            if p == True and q == False:
-                t = False
-            if p == False:
-                t = True
-                
+            
             print(p,
                   q,
                   r,
-                  t,
+                  not p or q,
                   not q,
                   p is r,
                   not q and r,
-                  (t) and (not q and r),
-                  ((t) and (not q and r)) or (p is r),
-                  sep='\t  ')
-    
+                  (not p or q) and (not q and r),
+                  ((not p or q) and (not q and r)) or (p is r),
+                  sep='\t\t')
+print("-"*108)
+print("\t\t\t  q\t\t\t\t\t\tp->q\t\t\t\t\tp<=>r\t\t\t\t   [(p->q)^(-q^r)]v(p<=>r)")
+print("-"*108)
